@@ -9,7 +9,7 @@ data "databricks_spark_version" "latest_lts" {
 
 resource "databricks_cluster" "shared_autoscaling" {
   cluster_name            = "Shared UC Cluster"
-  data_access_mode        = "SHARED"
+  data_security_mode        = "SHARED"
   
   idempotency_token       = "4d3b5de0-fa6b-43c9-b358-e8f0c04f867d"       # any unique value to ensure duplicate clusters are not created
   spark_version           = data.databricks_spark_version.latest_lts.id
