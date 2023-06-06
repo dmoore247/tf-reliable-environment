@@ -13,7 +13,7 @@ resource "databricks_cluster" "shared_autoscaling" {
   idempotency_token       = "4d3b5de0-fa6b-43c9-b358-e8f0c04f867d"       # any unique value to ensure duplicate clusters are not created
   spark_version           = data.databricks_spark_version.latest_lts.id
   node_type_id            = data.databricks_node_type.interactive_node.id
-  data_access_mode.       = "USER_ISOLATION"
+  data_access_mode        = "USER_ISOLATION"
   
   autotermination_minutes = 60
   autoscale {
