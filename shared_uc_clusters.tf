@@ -9,7 +9,6 @@ data "databricks_spark_version" "latest_lts" {
 
 resource "databricks_cluster" "shared_autoscaling" {
   cluster_name            = "Shared UC Cluster"
-  data_security_mode        = "USER_ISOLATION"
   
   idempotency_token       = "4d3b5de0-fa6b-43c9-b358-e8f0c04f867e"       # any unique value to ensure duplicate clusters are not created
   spark_version           = data.databricks_spark_version.latest_lts.id
@@ -24,4 +23,5 @@ resource "databricks_cluster" "shared_autoscaling" {
   custom_tags = {    # Please use all lowercase tag names
     "removeAfter" = "2024-01-31"
   }
+  data_security_mode        = "USER_ISOLATION"
 }
